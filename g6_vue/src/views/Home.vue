@@ -1,13 +1,13 @@
 <template>
-<header class="contenedorHeader">
-		<img class="contenedorHeader__imgLogo" src="images/Logo.png" alt="">
+	<header class="contenedorHeader">
+		<img class="contenedorHeader__imgLogo" src="../images/Logo.png" alt="logo">
 		<div class="contenedorHeader__banner">
 			<div class="contenedorHeader__filtro">
 				
 				<nav class="contenedorHeader__navegacion">
-					<a href="index.html">Inicio</a>
-					<a href="contacto.html">Contactanos</a>
-					<a href="loginPAge.html">Log in</a>
+					<a href="#">Inicio</a>
+					<a href="#">Contactanos</a>
+					<a href="#">Log in</a>
 				</nav>
 	
 				<h1>Universidad de las Tecnologias TIC</h1>
@@ -27,7 +27,7 @@
 					diam sit amet, rutrum feugiat magna. Ut quis nibh nec nisl luctus tristique. Interdum et malesuada
 					fames ac ante ipsum primis in faucibus. Sed ut justo ac leo dignissim iaculis. Aliquam tincidunt
 					ipsum non sapien volutpat, a fermentum felis pellentesque.</p>
-				<img class="contenedorMain__img" src="images/img-1.jpeg" alt="Computadoras">
+				<img class="contenedorMain__img" src="../images/img-1.jpeg" alt="Computadoras">
 			</div>
 			<div>
 				<h3>Oportunidades</h3>
@@ -35,7 +35,7 @@
 					diam sit amet, rutrum feugiat magna. Ut quis nibh nec nisl luctus tristique. Interdum et malesuada
 					fames ac ante ipsum primis in faucibus. Sed ut justo ac leo dignissim iaculis. Aliquam tincidunt
 					ipsum non sapien volutpat, a fermentum felis pellentesque.</p>
-				<img class="contenedorMain__img" src="images/img-2.jpeg" alt="Jovenes">
+				<img class="contenedorMain__img" src="../images/img-2.jpeg" alt="Jovenes">
 			</div>
 			<div>
 				<h3>Desarrollo personal</h3>
@@ -43,7 +43,7 @@
 					diam sit amet, rutrum feugiat magna. Ut quis nibh nec nisl luctus tristique. Interdum et malesuada
 					fames ac ante ipsum primis in faucibus. Sed ut justo ac leo dignissim iaculis. Aliquam tincidunt
 					ipsum non sapien volutpat, a fermentum felis pellentesque.</p>
-				<img class="contenedorMain__img" src="images/img-3.jpeg" alt="Desarrollo">
+				<img class="contenedorMain__img" src="../images/img-3.jpeg" alt="Desarrollo">
 			</div>
 		</section>
 
@@ -60,11 +60,11 @@
 				lorem. Etiam posuere mauris eu turpis suscipit fermentum. Duis dictum sem ac malesuada lacinia.
 				Suspendisse vulputate nec metus ac ullamcorper.</p>
 				
-			<img class="curso__img" src="images/img-4.jpeg" alt="Joven programando">
+			<img class="curso__img" src="../images/img-4.jpeg" alt="Joven programando">
 		</div>
 		<div class="cursos">
 			<h3 class="cursos__titulo">Java</h3>
-			<img class="curso__img" src="images/img-5.jpeg" alt="Codificacion Java">
+			<img class="curso__img" src="../images/img-5.jpeg" alt="Codificacion Java">
 			<p>Aliquam quis lorem vel odio maximus sagittis sit amet sit amet velit. Vivamus urna risus, rutrum
 				non diam sit amet, rutrum feugiat magna. Ut quis nibh nec nisl luctus tristique. Interdum et
 				malesuada fames ac ante ipsum primis in faucibus. Sed ut justo ac leo dignissim iaculis. Aliquam
@@ -82,7 +82,7 @@
 				interdum iaculis, neque quam ultrices lacus, ut tempus sem turpis a lorem. Etiam posuere mauris
 				eu turpis suscipit fermentum. Duis dictum sem ac malesuada lacinia. Suspendisse vulputate nec
 				metus ac ullamcorper.</p>
-			<img class="curso__img" src="images/img-6.jpeg" alt="Esquema de ideas">
+			<img class="curso__img" src="../images/img-6.jpeg" alt="Esquema de ideas">
 		</div>
 
 		</section>
@@ -93,9 +93,9 @@
 		<div class="contenedorFooter">
 			<div class="contenedorFooter__banner">
 				<nav class="navegacion-footer">
-					<a href="index.html">Inicio</a>
-					<a href="contacto.html">Contactanos</a>
-					<a href="loginPAge.html">Log in</a>
+					<a href="#">Inicio</a>
+					<a href="#">Contactanos</a>
+					<a href="#">Log in</a>
 				</nav>
 			</div>
 		</div>
@@ -157,7 +157,7 @@ export default {
 		/** Header **/
 		.contenedorHeader {
 			
-			background-image: url(/images/banner.jpeg);
+			background-image: url(../images/banner.jpeg);
 			height: 280px;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -266,7 +266,7 @@ export default {
 		/** Footer **/
 		.contenedorFooter {
 			margin-top: 80px;
-			background-image: url(/images/banner.jpeg);
+			background-image: url(../images/banner.jpeg);
 			height: 100px;
 			background-size: cover;
 			background-repeat: no-repeat;

@@ -1,0 +1,265 @@
+<style scoped>
+html * {
+			margin: 0;
+			padding: 0;
+			font-size: 62.5%;
+			/* esto se hace para que 1rem = 10px*/
+		}
+
+		body {
+			max-width: 1140px;
+			font-size: 16px;
+		}
+
+		h1 {
+			font-size: 3.0rem;
+		}
+
+		h2 {
+			font-size: 2.4rem;
+		}
+
+		h3 {
+			font-size: 1.8rem;
+		}
+
+		h4 {
+			font-size: 1.2rem;
+		}
+
+		p {
+			font-size: 1.1rem;
+		}
+
+		a {
+			font-size: 1.8rem;
+		}
+
+		/** Header **/
+		.contenedorHeader {
+			
+			background-image: url(../images/banner.jpeg);
+			height: 280px;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			display: grid;
+			grid-template-columns: 280px 860px;
+		}
+
+		.contenedorHeader__imgLogo {
+			height: 280px;
+			width: 280px;
+		}
+
+		.contenedorHeader__banner {
+
+			position: relative;
+		}
+		.contenedorHeader__filtro {
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.7);
+			width: 100%;
+			height: 100%;
+		}
+		.contenedorHeader__banner h1 {
+			text-align: center;
+			margin-top: 120px;
+			color: white;
+			
+		}
+		.contenedorHeader__navegacion {
+			display: flex;
+			gap: 2rem;
+			justify-content: right;
+			margin-top: 50px;
+			margin-right: 50px;
+			
+			
+		}
+		.contenedorHeader__navegacion a {
+			
+			color: white;
+			text-decoration: none;
+		}
+
+
+		
+		/** Formulario **/
+		.titulo{
+			color: #206A64;
+			text-align: center;
+			margin-top: 100px;
+			margin-bottom: 50px;
+
+		}
+		.contenedor__formulario {
+			width: 30rem;
+			margin: 0 auto;
+
+		}
+		.formulario {
+			height: 20rem;
+			width:  100%;
+			margin: 0 auto;
+			font-size: 3.4rem;
+			display:grid;
+			grid-template-rows: 2fr 1fr;
+			
+
+		}
+		.formulario__datos {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			background-color:#E5E0DC;
+			padding: 2rem;
+			border-radius: 1rem;
+		}
+		.formulario__label {
+			margin: 2rem 0;
+			text-align: center;
+			font-weight: bold;
+		}
+		.formulario__input {
+			margin: 2rem 2rem 2rem 0rem;
+
+		}
+		.ingresar {
+			margin-top: 2rem;
+			display: flex;
+			justify-content: right;
+			padding: 1rem;
+			
+		}
+
+
+
+		/** Footer **/
+		.contenedorFooter {
+			margin-top: 40px;
+			background-image: url(../images/banner.jpeg);
+			height: 100px;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			position: relative;
+
+		}
+		
+		.contenedorFooter__banner {
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.7);
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content:right;
+			
+		}
+		.navegacion-footer {
+			display: flex;
+			gap: 2rem;
+			padding-right: 2rem;
+		}
+		.navegacion-footer a {
+			
+			color: white;
+			text-decoration: none;
+		}
+</style>
+
+<template>
+    <body>
+	<header class="contenedorHeader">
+		<img class="contenedorHeader__imgLogo" src="images/Logo.png" alt="">
+		<div class="contenedorHeader__banner">
+			<div class="contenedorHeader__filtro">
+				
+				<nav class="contenedorHeader__navegacion">
+					<a href="index.html">Inicio</a>
+					<a href="contacto.html">Contactanos</a>
+				</nav>
+	
+				<h1>Universidad de las Tecnologias TIC</h1>
+			</div>
+
+		</div>
+	</header>
+	
+	<section>
+		<h3 class="titulo">Login</h3>
+		<div class="contenedor__formulario">
+			<form class="formulario">
+				<div class="formulario__datos">
+					<label class="formulario__label" for="cedulaUsuario">C.C. Usuario</label>
+					<input class="formulario__input" type="number" placeholder="Entra tu cédula" name="cedulaUsuario" id="cedulaUsuario" v-model="cedula" required>
+					<label class="formulario__label" for="EntradaContraseña">Contraseña</label>
+					<input class="formulario__input" type="password" placeholder="entradaPassword" name="entradaPassword" id="entradaPassword" v-model="password" required>
+				</div>
+				<div class="ingresar">
+					<input type="submit" name="ingresar" value="Ingresar" v-on:click="procesarDatos">
+				</div>
+			</form>
+
+			
+		</div>
+       
+
+		
+	</section>
+	
+	<footer>
+		<!-- <img src="images\Banner.png" alt="Pie de pagina"> -->
+		<div class="contenedorFooter">
+			<div class="contenedorFooter__banner">
+				<nav class="navegacion-footer">
+					<a href="index.html">Inicio</a>
+					<a href="contacto.html">Contactanos</a>
+				</nav>
+			</div>
+		</div>
+	</footer>
+	
+</body>
+</template>
+
+<script>
+export default {
+    data(){
+        return {
+            cedula:'',
+            password: ''
+        };
+    },
+    mounted(){
+    const listaUsuarios = {
+    '1241654276':'897',
+    '1567543288': '123',
+    '1623902127': '095',
+    '1254726212': '419'
+};
+    },
+    methods:{
+        procesarDatos(){
+            let validar = false;
+            for(i in listaUsuarios) {
+                
+                if (i === this.cedula && listaUsuarios[i] === this.password) {  
+                    validar = true; 
+                }
+            };    
+            if (validar === true) {
+                alert('Cedula y password validos');
+            }else{
+                alert('la cedula o el password no coinciden');
+            }
+        }
+    }
+}
+</script>
+
+
+
+
+
+
