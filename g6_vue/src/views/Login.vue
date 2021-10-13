@@ -228,49 +228,38 @@ html * {
 <script>
 export default {
 
-    mounted() {
-		usuario1 = {cedulaUsuario:'1241654276',passUsuario:'897'};
-		usuario2 = {cedulaUsuario:'1567543288',passUsuario:'123'};
-		usuario3 = {cedulaUsuario:'1623902127',passUsuario:'563'};
-		usuario4 = {cedulaUsuario:'1254726212',passUsuario:'915'};
-
-		this.listaUsuarios[usuario1, usuario2, usuario3, usuario4];
+	mounted(){
+		
     },
-	data(){
+    data(){
         return {
             cedula:'',
             password: '',
-			listaUsuarios:[]
-        };
+			listaUsuarios: [
+				{'cc':'1241654276', 'pass':'897'},
+				{'cc':'1567543288', 'pass':'123'},
+				{'cc':'1623902127', 'pass':'095'},
+				{'cc':'1254726212', 'pass':'419'}
+			]			
+        };			
     },
+    
     methods:{
         procesarDatos(){
-
-			if (this.cedula && this.password){
-
-				alert(this.listaUsuarios[0].cedulaUsuario);
-				alert('hola');
-				
-
-			}
+            let validar = false;
 			
-			
-            // let validar = false;
-            // for(i in listaUsuarios) {
-                
-            //     if (i === this.cedula && listaUsuarios[i] === this.password) {  
-            //         validar = true; 
-            //     }
-            // };    
-            // if (validar === true) {
-            //     alert('Cedula y password validos');
-            // }else{
-            //     alert('la cedula o el password no coinciden');
-            // }
-			// this.cedula='';
-			// this.password='';
+            for(const i of this.listaUsuarios) {
+					
+                if (i.cc === this.cedula && i.pass === this.password) {  
+                    validar = true; 
+                }
+            };    
+            if (validar === true) {
+                alert('Cedula y password validos');
+            }else{
+                alert('la cedula o el password no coinciden');
+            }
         }
-
     }
 }
 </script>
