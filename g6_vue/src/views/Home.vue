@@ -5,9 +5,10 @@
 			<div class="contenedorHeader__filtro">
 				
 				<nav class="contenedorHeader__navegacion">
-					<a href="#">Inicio</a>
-					<a href="#">Contactanos</a>
-					<a href="#">Log in</a>
+					
+					<router-link to="/">Inicio</router-link>
+					
+					<router-link to="/login">Login</router-link>
 				</nav>
 	
 				<h1>Universidad de las Tecnologias TIC</h1>
@@ -93,9 +94,9 @@
 		<div class="contenedorFooter">
 			<div class="contenedorFooter__banner">
 				<nav class="navegacion-footer">
-					<a href="#">Inicio</a>
-					<a href="#">Contactanos</a>
-					<a href="#">Log in</a>
+					<router-link to="/">Inicio</router-link>
+					
+					<router-link to="/login">Login</router-link>
 				</nav>
 			</div>
 		</div>

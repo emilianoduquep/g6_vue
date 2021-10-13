@@ -89,7 +89,7 @@ html * {
 		.titulo{
 			color: #206A64;
 			text-align: center;
-			margin-top: 100px;
+			margin-top: 50px;
 			margin-bottom: 50px;
 
 		}
@@ -176,8 +176,8 @@ html * {
 			<div class="contenedorHeader__filtro">
 				
 				<nav class="contenedorHeader__navegacion">
-					<a href="index.html">Inicio</a>
-					<a href="contacto.html">Contactanos</a>
+					<router-link to="/">Inicio</router-link>
+					
 				</nav>
 	
 				<h1>Universidad de las Tecnologias TIC</h1>
@@ -189,17 +189,19 @@ html * {
 	<section>
 		<h3 class="titulo">Login</h3>
 		<div class="contenedor__formulario">
-			<form class="formulario">
+			<form class="formulario" @submit="procesarDatos" action="#">
 				<div class="formulario__datos">
 					<label class="formulario__label" for="cedulaUsuario">C.C. Usuario</label>
-					<input class="formulario__input" type="number" placeholder="Entra tu cédula" name="cedulaUsuario" id="cedulaUsuario" v-model="cedula" required>
+					<input class="formulario__input" type="text" placeholder="Entra tu cédula" name="cedulaUsuario" id="cedulaUsuario" v-model="cedula" required>
 					<label class="formulario__label" for="EntradaContraseña">Contraseña</label>
-					<input class="formulario__input" type="password" placeholder="entradaPassword" name="entradaPassword" id="entradaPassword" v-model="password" required>
+					<input class="formulario__input" type="password" placeholder="Password" v-model="password" required>
 				</div>
 				<div class="ingresar">
-					<input type="submit" name="ingresar" value="Ingresar" v-on:click="procesarDatos">
+					<input type="submit" value="Ingresar" >
+					
 				</div>
 			</form>
+			
 
 			
 		</div>
@@ -209,12 +211,12 @@ html * {
 	</section>
 	
 	<footer>
-		<!-- <img src="images\Banner.png" alt="Pie de pagina"> -->
+		<!-- <img src="images/Banner.png" alt="Pie de pagina"> -->
 		<div class="contenedorFooter">
 			<div class="contenedorFooter__banner">
 				<nav class="navegacion-footer">
-					<a href="index.html">Inicio</a>
-					<a href="contacto.html">Contactanos</a>
+					<router-link to="/">Inicio</router-link>
+					
 				</nav>
 			</div>
 		</div>
@@ -225,35 +227,50 @@ html * {
 
 <script>
 export default {
-    data(){
+
+    mounted() {
+		usuario1 = {cedulaUsuario:'1241654276',passUsuario:'897'};
+		usuario2 = {cedulaUsuario:'1567543288',passUsuario:'123'};
+		usuario3 = {cedulaUsuario:'1623902127',passUsuario:'563'};
+		usuario4 = {cedulaUsuario:'1254726212',passUsuario:'915'};
+
+		this.listaUsuarios[usuario1, usuario2, usuario3, usuario4];
+    },
+	data(){
         return {
             cedula:'',
-            password: ''
+            password: '',
+			listaUsuarios:[]
         };
-    },
-    mounted(){
-    const listaUsuarios = {
-    '1241654276':'897',
-    '1567543288': '123',
-    '1623902127': '095',
-    '1254726212': '419'
-};
     },
     methods:{
         procesarDatos(){
-            let validar = false;
-            for(i in listaUsuarios) {
+
+			if (this.cedula && this.password){
+
+				alert(this.listaUsuarios[0].cedulaUsuario);
+				alert('hola');
+				
+
+			}
+			
+			
+            // let validar = false;
+            // for(i in listaUsuarios) {
                 
-                if (i === this.cedula && listaUsuarios[i] === this.password) {  
-                    validar = true; 
-                }
-            };    
-            if (validar === true) {
-                alert('Cedula y password validos');
-            }else{
-                alert('la cedula o el password no coinciden');
-            }
+            //     if (i === this.cedula && listaUsuarios[i] === this.password) {  
+            //         validar = true; 
+            //     }
+            // };    
+            // if (validar === true) {
+            //     alert('Cedula y password validos');
+            // }else{
+            //     alert('la cedula o el password no coinciden');
+            // }
+			// this.cedula='';
+			// this.password='';
         }
+
     }
 }
 </script>
