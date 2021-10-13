@@ -47,21 +47,21 @@
                     <div>
                         <label for="Año">Año</label>
                         <select name="year" id="select_year" v-model="sAnno">
-                            <option value="-1">Seleccione el Año</option>
-							<option v-for="(i, index) in anno" value="index">{{i}}</option>
+                            <option value="">Seleccione el Año</option>
+							<option v-for="i in anno" value="i">{{i}}</option>
                         </select>
                     </div>
 
                     <div>
                         <label for="semestre">Semestre</label>
                         <select name="semester" id="select_semester" v-model="sSemester">
-							<option value="-1">Seleccione el Semestre</option>
-							<option v-for="(i, index) in 2" value="index">{{i}}</option>                
+							<option value="">Seleccione el Semestre</option>
+							<option v-for="i in 2" value="i">{{i}}</option>                
                         </select>
                     </div>
 
                     <div>
-                        <a class="boton_buscar" href="#" onclick="procesarDatos()">buscar</a>
+                        <a class="boton_buscar" @click="buscarCalificaciones()">Buscar</a>
                     </div>
             
 
@@ -81,7 +81,15 @@
                             </tr>
                         </thead >
                         <tbody id="tabla">
-
+							<tr v-for="k in this.yearsSemester[this.data]">
+								<td>{{k.codigo}}</td>
+								<td>{{k.asignatura}}</td>
+								<td>{{k.creditos}}</td>
+								<td>{{k.periodo1}}</td>
+								<td>{{k.periodo2}}</td>
+								<td>{{k.periodo3}}</td>
+								<td>{{k.notaFinal}}</td>
+							</tr>
                         </tbody>
 <!--                    
                         <tr>
@@ -379,13 +387,16 @@ export default {
 
 	mounted(){
 		
+		
     },
     data(){
         return {
             cedula:'1241654276',
-			anno: [2015, 2016, 2017, 2018, 2019, 2020, 2021],
+			anno: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
 			sAnno: '',
 			sSemester: '',
+			lData: '',
+			
 			yearsSemester: {
 				'20161':[
 					{'codigo':5051, 'asignatura':'Calculo-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
@@ -441,8 +452,23 @@ export default {
     },
     
     methods:{
-		
-	
+		buscarCalificaciones() {
+    
+			if (this.sAnno.value === "" || this.sSemester.value === "") {
+				alert("Debe seleccionar un año y un semestre");
+			} else {
+				console.log(this.sAnno.text);
+				console.log(this.sSemester.text);
+				this.lData = '20161'
+				console.log(lData.value);
+				//this.sAnno.value + this.sSemester.value;
+				for (let lectura of this.yearsSemester[lData]) {
+					lectura.notaFinal = (lectura.periodo1 + lectura.periodo2 + lectura.periodo3)/3
+					console.log(lectura.notaFinal);
+				}
+			}
+			
+		},		
     }
 }
 </script>
