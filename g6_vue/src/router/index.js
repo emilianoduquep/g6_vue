@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Calificaciones from '../views/Calificaciones.vue'
 import Informacion from '../views/Informacion.vue'
+import Contacto from '../views/Contacto.vue'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/informacion',
     name: 'Informacion',
     component: Informacion
+  },
+  {
+    path: '/contacto',
+    name: 'Contacto',
+    component: Contacto
   },
 ]
 

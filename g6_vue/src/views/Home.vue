@@ -1,4 +1,5 @@
 <template>
+<div class="contenedorTotal">
 	<header class="contenedorHeader">
 		<img class="contenedorHeader__imgLogo" src="../images/Logo.png" alt="logo">
 		<div class="contenedorHeader__banner">
@@ -7,7 +8,7 @@
 				<nav class="contenedorHeader__navegacion">
 					
 					<router-link to="/">Inicio</router-link>
-					
+					<router-link to="/contacto">Contacto</router-link>
 					<router-link to="/login">Login</router-link>
 				</nav>
 	
@@ -95,12 +96,13 @@
 			<div class="contenedorFooter__banner">
 				<nav class="navegacion-footer">
 					<router-link to="/">Inicio</router-link>
-					
+					<router-link to="/contacto">Contacto</router-link>
 					<router-link to="/login">Login</router-link>
 				</nav>
 			</div>
 		</div>
 	</footer>
+</div>
 </template>
 
 
@@ -119,17 +121,16 @@ export default {
 </script>
 
 <style scoped>
-		html * {
-			margin: 0;
+		.contenedorTotal {
+			margin: 0 auto;
 			padding: 0;
 			font-size: 62.5%;
 			/* esto se hace para que 1rem = 10px*/
-		}
-
-		body {
 			max-width: 1140px;
 			font-size: 16px;
 		}
+
+
 
 		h1 {
 			font-size: 3.0rem;

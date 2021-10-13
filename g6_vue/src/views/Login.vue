@@ -1,15 +1,14 @@
 <style scoped>
-html * {
-			margin: 0;
+.contenedorTotal {
+			margin: 0 auto;
 			padding: 0;
 			font-size: 62.5%;
 			/* esto se hace para que 1rem = 10px*/
-		}
-
-		body {
 			max-width: 1140px;
 			font-size: 16px;
 		}
+
+
 
 		h1 {
 			font-size: 3.0rem;
@@ -102,9 +101,9 @@ html * {
 			height: 20rem;
 			width:  100%;
 			margin: 0 auto;
-			font-size: 3.4rem;
+			font-size: 1.8rem;
 			display:grid;
-			grid-template-rows: 2fr 1fr;
+			grid-template-rows: 1fr 1fr;
 			
 
 		}
@@ -112,23 +111,26 @@ html * {
 			display: grid;
 			grid-template-columns: 1fr 2fr;
 			background-color:#E5E0DC;
-			padding: 2rem;
+			padding: 1rem;
 			border-radius: 1rem;
 		}
 		.formulario__label {
+			font-size: 18px;
 			margin: 2rem 0;
 			text-align: center;
-			font-weight: bold;
+			
 		}
 		.formulario__input {
 			margin: 2rem 2rem 2rem 0rem;
 
 		}
 		.ingresar {
-			margin-top: 2rem;
+			margin-top: 1.5rem;
 			display: flex;
 			justify-content: right;
-			padding: 1rem;
+			padding: 0;
+			height: fit-content;
+			
 			
 		}
 
@@ -169,9 +171,9 @@ html * {
 </style>
 
 <template>
-    <body>
+    <div class="contenedorTotal">
 	<header class="contenedorHeader">
-		<img class="contenedorHeader__imgLogo" src="images/Logo.png" alt="">
+		<img class="contenedorHeader__imgLogo" src="../images/Logo.png" alt="">
 		<div class="contenedorHeader__banner">
 			<div class="contenedorHeader__filtro">
 				
@@ -197,13 +199,9 @@ html * {
 					<input class="formulario__input" type="password" placeholder="Password" v-model="password" required>
 				</div>
 				<div class="ingresar">
-					<input type="submit" value="Ingresar" >
-					
+					<input type="submit" value="Ingresar" >	
 				</div>
 			</form>
-			
-
-			
 		</div>
        
 
@@ -222,7 +220,7 @@ html * {
 		</div>
 	</footer>
 	
-</body>
+</div>
 </template>
 
 <script>
