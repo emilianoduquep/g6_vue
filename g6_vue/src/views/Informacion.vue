@@ -373,7 +373,7 @@
 		<aside>
 			<h2>Menú</h2>
 			<h3><router-link to="/informacion">Información Personal</router-link></h3>
-			<h3><a href="#">Registrar Cursos</a></h3>
+			<h3><router-link to="/registrar">Registrar Cursos</router-link></h3>
 			<h3><router-link to="/calificaciones">Ver Calificaciones</router-link></h3>
 		</aside>
 		

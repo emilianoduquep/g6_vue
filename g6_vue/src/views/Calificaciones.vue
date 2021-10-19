@@ -1,7 +1,7 @@
 <template>
     <body>
 	<header class="contenedorHeader">
-		<img class="contenedorHeader__imgLogo" src="images/Logo.png" alt="">
+		<img class="contenedorHeader__imgLogo" src="../images/Logo.png" alt="logo">
 		<div class="contenedorHeader__banner">
 			<div class="contenedorHeader__filtro">
 				
@@ -23,7 +23,7 @@
             
             <div class="menu_lateral__opciones">
                 <router-link to="/informacion">Información Personal</router-link>
-                <a href="#">Registrar Cursos</a>
+                <router-link to="/registrar">Registrar Cursos</router-link>
                 <router-link to="/calificaciones">Ver Calificaciones</router-link>
             </div>
             <div class="menu_lateral__logout">
@@ -48,7 +48,7 @@
                         <label for="Año">Año</label>
                         <select name="year" id="select_year" v-model="sAnno">
                             <option value="">Seleccione el Año</option>
-							<option v-for="i in anno" value="i">{{i}}</option>
+							<option v-for="i in anno" :key="i" v-bind:value="i">{{i}}</option>
                         </select>
                     </div>
 
@@ -56,7 +56,7 @@
                         <label for="semestre">Semestre</label>
                         <select name="semester" id="select_semester" v-model="sSemester">
 							<option value="">Seleccione el Semestre</option>
-							<option v-for="i in 2" value="i">{{i}}</option>                
+							<option v-for="i in 2" :key="i" v-bind:value="i">{{i}}</option>                
                         </select>
                     </div>
 
@@ -81,7 +81,8 @@
                             </tr>
                         </thead >
                         <tbody id="tabla">
-							<tr v-for="k in this.yearsSemester[this.data]">
+                             <!-- console.log(this.arregloCalificaciones[20161][0].codigo); -->
+							<tr v-for="k in this.arregloCalificaciones[this.yS]" :key="k">
 								<td>{{k.codigo}}</td>
 								<td>{{k.asignatura}}</td>
 								<td>{{k.creditos}}</td>
@@ -383,23 +384,27 @@
 </style>
 
 <script>
+import CalificacionesService from "@/services/calificaciones.js"
 export default {
 
 	mounted(){
 		
+        this.arregloCalificaciones=CalificacionesService.obtenerTodos();
 		
     },
     data(){
         return {
+            arregloCalificaciones: {},
             cedula:'1241654276',
 			anno: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
 			sAnno: '',
 			sSemester: '',
+            yS:20161,
 			lData: '',
 			
 			yearsSemester: {
 				'20161':[
-					{'codigo':5051, 'asignatura':'Calculo-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
+					{codigo:5051, asignatura:'Calculo-1', creditos: 2, periodo1:4, periodo2:4.3, periodo3:3.5},
 					{'codigo':5052, 'asignatura':'Fisica-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
 					{'codigo':5036, 'asignatura':'Geometría Analítica', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8},
 					{'codigo':5039, 'asignatura':'Arquitectura de Datos', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
@@ -453,20 +458,25 @@ export default {
     
     methods:{
 		buscarCalificaciones() {
+            console.log(this.sAnno.value);
+            console.log(this.sSemester);
+
+            // console.log(this.arregloCalificaciones[20161][0].codigo);
+            // console.log(this.arregloCalificaciones[20161][0].asignatura);
     
-			if (this.sAnno.value === "" || this.sSemester.value === "") {
-				alert("Debe seleccionar un año y un semestre");
-			} else {
-				console.log(this.sAnno.text);
-				console.log(this.sSemester.text);
-				this.lData = '20161'
-				console.log(lData.value);
-				//this.sAnno.value + this.sSemester.value;
-				for (let lectura of this.yearsSemester[lData]) {
-					lectura.notaFinal = (lectura.periodo1 + lectura.periodo2 + lectura.periodo3)/3
-					console.log(lectura.notaFinal);
-				}
-			}
+			// if (this.sAnno.value === "" || this.sSemester.value === "") {
+			// 	alert("Debe seleccionar un año y un semestre");
+			// } else {
+			// 	console.log(this.sAnno.text);
+			// 	console.log(this.sSemester.text);
+			// 	this.lData = '20161'
+			// 	console.log(lData.value);
+			// 	//this.sAnno.value + this.sSemester.value;
+			// 	for (let lectura of this.yearsSemester[lData]) {
+			// 		lectura.notaFinal = (lectura.periodo1 + lectura.periodo2 + lectura.periodo3)/3
+			// 		console.log(lectura.notaFinal);
+			// 	}
+			// }
 			
 		},		
     }

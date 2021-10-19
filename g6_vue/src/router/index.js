@@ -4,6 +4,7 @@ import Login from '../views/Login.vue'
 import Calificaciones from '../views/Calificaciones.vue'
 import Informacion from '../views/Informacion.vue'
 import Contacto from '../views/Contacto.vue'
+import Registrar from '../views/Registrar.vue'
 
 const routes = [
   {
@@ -39,6 +40,11 @@ const routes = [
     name: 'Contacto',
     component: Contacto
   },
+  {
+    path: '/registrar',
+    name: 'Registrar',
+    component: Registrar
+  }
 ]
 
 const router = createRouter({
