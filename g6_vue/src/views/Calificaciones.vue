@@ -47,15 +47,15 @@
                     <div>
                         <label for="Año">Año</label>
                         <select name="year" id="select_year" v-model="sAnno">
-                            <option value="">Seleccione el Año</option>
-							<option v-for="i in anno" :key="i" v-bind:value="i">{{i}}</option>
+                            <option value=-1>Seleccione el Año</option>
+							<option v-for="i in anno" :key="i" :value="i">{{i}}</option>
                         </select>
                     </div>
 
                     <div>
                         <label for="semestre">Semestre</label>
                         <select name="semester" id="select_semester" v-model="sSemester">
-							<option value="">Seleccione el Semestre</option>
+							<option value=-1>Seleccione el Semestre</option>
 							<option v-for="i in 2" :key="i" v-bind:value="i">{{i}}</option>                
                         </select>
                     </div>
@@ -77,11 +77,11 @@
                                 <th>1er</th>
                                 <th>2do</th>
                                 <th>3er</th>
-                                <th>Final</th>
+                                
                             </tr>
                         </thead >
                         <tbody id="tabla">
-                             <!-- console.log(this.arregloCalificaciones[20161][0].codigo); -->
+                             
 							<tr v-for="k in this.arregloCalificaciones[this.yS]" :key="k">
 								<td>{{k.codigo}}</td>
 								<td>{{k.asignatura}}</td>
@@ -89,39 +89,10 @@
 								<td>{{k.periodo1}}</td>
 								<td>{{k.periodo2}}</td>
 								<td>{{k.periodo3}}</td>
-								<td>{{k.notaFinal}}</td>
+								
 							</tr>
                         </tbody>
-<!--                    
-                        <tr>
-                            <td>15501</td>
-                            <td>Macro Economía</td>
-                            <td>2</td>
-                            <td>3.1</td>
-                            <td>5.0</td>
-                            <td>4.4</td>
-                            <td>4.2</td>
-                        </tr>
-            
-                        <tr>
-                            <td>15502</td>
-                            <td>Estadística</td>
-                            <td>2</td>
-                            <td>3.1</td>
-                            <td>5.0</td>
-                            <td>4.4</td>
-                            <td>4.2</td>
-                        </tr>
-            
-                        <tr>
-                            <td>15503</td>
-                            <td>Finazas 1</td>
-                            <td>2</td>
-                            <td>3.1</td>
-                            <td>5.0</td>
-                            <td>4.4</td>
-                            <td>4.2</td>
-                        </tr> -->
+
                     </table>
                 </div>
 
@@ -396,70 +367,25 @@ export default {
         return {
             arregloCalificaciones: {},
             cedula:'1241654276',
-			anno: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
-			sAnno: '',
-			sSemester: '',
-            yS:20161,
-			lData: '',
-			
-			yearsSemester: {
-				'20161':[
-					{codigo:5051, asignatura:'Calculo-1', creditos: 2, periodo1:4, periodo2:4.3, periodo3:3.5},
-					{'codigo':5052, 'asignatura':'Fisica-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':5036, 'asignatura':'Geometría Analítica', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8},
-					{'codigo':5039, 'asignatura':'Arquitectura de Datos', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20162':[
-					{'codigo':6051, 'asignatura':'Cálculo-2', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':6052, 'asignatura':'Fisica-2', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':6036, 'asignatura':'Ecua. Diferenciales', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20171':[
-					{'codigo':6051, 'asignatura':'Calculo-3', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':6052, 'asignatura':'Fisica-3', 'creditos': 4, 'periodo1':3.4, 'periodo2':4.8, 'periodo3':3.0},
-					{'codigo':6036, 'asignatura':'Fundamentos Programación', 'creditos': 4, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20172':[
-					{'codigo':7051, 'asignatura':'Algoritmos-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':7052, 'asignatura':'Matematicas Especiales', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':7036, 'asignatura':'Programación Básica-1', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20181':[
-					{'codigo':8051, 'asignatura':'Algoritmos-2', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':8052, 'asignatura':'Ciencia de Datos-2', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':8036, 'asignatura':'Programación Básica-2', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20182':[
-					{'codigo':9051, 'asignatura':'Algoritmos-3', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':9052, 'asignatura':'Introducción DB-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':9036, 'asignatura':'Geometría', 'creditos': 3, 'periodo1':3.1, 'periodo2':3.3, 'periodo3':3.8}],
-				'20191':[
-					{'codigo':15051, 'asignatura':'Calculo-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':15052, 'asignatura':'Fisica-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':15036, 'asignatura':'Introducción DB-2', 'creditos': 2, 'periodo1':4.0, 'periodo2':3.0, 'periodo3':3.8}],
-				'20192':[
-					{'codigo':16051, 'asignatura':'Calculo-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':16052, 'asignatura':'Fisica-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':16036, 'asignatura':'Geometría', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20201':[
-					{'codigo':17051, 'asignatura':'Calculo-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':17052, 'asignatura':'Fisica-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':17036, 'asignatura':'Geometría', 'creditos': 3, 'periodo1':3.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20202':[
-					{'codigo':18051, 'asignatura':'Calculo-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':18052, 'asignatura':'Fisica-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':18036, 'asignatura':'Geometría', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20211':[
-					{'codigo':19051, 'asignatura':'Calculo-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':19052, 'asignatura':'Fisica-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':19036, 'asignatura':'Geometría', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}],
-				'20212':[
-					{'codigo':20051, 'asignatura':'Calculo-1', 'creditos': 2, 'periodo1':4, 'periodo2':4.3, 'periodo3':3.5},
-					{'codigo':20052, 'asignatura':'Fisica-1', 'creditos': 4, 'periodo1':4.3, 'periodo2':4.1, 'periodo3':3.0},
-					{'codigo':20036, 'asignatura':'Introducción DB-1', 'creditos': 3, 'periodo1':4.0, 'periodo2':3.6, 'periodo3':3.8}]
-			}
+			anno: ['2016', '2017', '2018', '2019', '2020', '2021'],
+			sAnno: -1,
+			sSemester: -1,
+            yS:'',
         };			
     },
     
     methods:{
 		buscarCalificaciones() {
-            console.log(this.sAnno.value);
-            console.log(this.sSemester);
+            
+            if (this.sAnno === -1 || this.sSemester === -1) {
+			 	alert("Debe seleccionar un año y un semestre");
+			}else{
+                this.yS=parseInt(String(this.sAnno) + String(this.sSemester));
+                
+            }
+
+            
+
 
             // console.log(this.arregloCalificaciones[20161][0].codigo);
             // console.log(this.arregloCalificaciones[20161][0].asignatura);
