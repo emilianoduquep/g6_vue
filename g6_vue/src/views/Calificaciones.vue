@@ -22,9 +22,9 @@
             </div>
             
             <div class="menu_lateral__opciones">
-                <a href="#">Información Personal</a>
+                <router-link to="/informacion">Información Personal</router-link>
                 <a href="#">Registrar Cursos</a>
-                <a href="#">Ver Calificaciones</a>
+                <router-link to="/calificaciones">Ver Calificaciones</router-link>
             </div>
             <div class="menu_lateral__logout">
                 <router-link to="/">Log Out</router-link>
@@ -179,7 +179,7 @@
 		}
 
 		a {
-			font-size: 1.8rem;
+			font-size: 1.4rem;
 		}
 
 		/** Header **/

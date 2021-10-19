@@ -363,8 +363,7 @@
 			<h1>Universidad de las Tecnologias TIC</h1>
 			<nav>				
 				<ul><!--Lista de vinculos de navegacion rapida a lo largo de la pagina-->
-					<li><a href="contacto.html">Contactenos</a> | </li>
-					<li><a href="index.html">Log out</a></li>
+					<li><router-link to="/">Log out</router-link></li>
 				</ul>				
 			</nav>
 		</div>	
@@ -373,9 +372,9 @@
 	<div class="mainWrapper">
 		<aside>
 			<h2>Menú</h2>
-			<h3><a href="informacionPersonal.html">Información Personal</a></h3>
-			<h3><a href="registrarCursos">Registrar Cursos</a></h3>
-			<h3><a href="verCursos">Ver Calificaciones</a></h3>
+			<h3><router-link to="/informacion">Información Personal</router-link></h3>
+			<h3><a href="#">Registrar Cursos</a></h3>
+			<h3><router-link to="/calificaciones">Ver Calificaciones</router-link></h3>
 		</aside>
 		
 		<section>
@@ -508,9 +507,9 @@ export default {
     },
     data(){
         return {
-            cedula:'1241654276',//Variable a la espera de la comunicacion entre paginas
+            cedula:'123456789',//Variable a la espera de la comunicacion entre paginas
 			listaUsuarios: {//Variable a la espera de la comunicacion entre paginas
-				'1241654276':{'nombres':'Ana Milena', 'apellidos':'Guzman Arrieta', 'tdocumento':'CC', 'documento':'1241654276', 'fechaNacimiento':'08/09/1995', 'edad':26, 'sexo':'Femenino', 'estado':'Activo', 'direccion':'Dg. 21 ##49-112', 'municipio':'Cartagena', 'barrio':'Alto Bosque', 'telefono':'3147821341', 'email':'Ana.Guzman@MTic.edu.co', 'programa':'Ing. Industrial', 'semestre':3},
+				'123456789':{'nombres':'Ana Milena', 'apellidos':'Guzman Arrieta', 'tdocumento':'CC', 'documento':'123456789', 'fechaNacimiento':'08/09/1995', 'edad':26, 'sexo':'Femenino', 'estado':'Activo', 'direccion':'Dg. 21 ##49-112', 'municipio':'Cartagena', 'barrio':'Alto Bosque', 'telefono':'3147821341', 'email':'Ana.Guzman@MTic.edu.co', 'programa':'Ing. Industrial', 'semestre':3},
 			}
         };			
     },

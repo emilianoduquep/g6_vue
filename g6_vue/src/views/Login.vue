@@ -234,7 +234,7 @@ export default {
             cedula:'',
             password: '',
 			listaUsuarios: [
-				{'cc':'1241654276', 'pass':'897'},
+				{'cc':'123456789', 'pass':'123'},
 			]			
         };			
     },
@@ -251,6 +251,7 @@ export default {
             };    
             if (validar === true) {
                 alert('Cedula y password validos');
+				this.$router.push({name:"Informacion"});
             }else{
                 alert('la cedula o el password no coinciden');
             }

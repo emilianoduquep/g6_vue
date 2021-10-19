@@ -1,12 +1,12 @@
 <template>
-  <div id="nav">
+  <!--<div id="nav">
     <router-link to="/">Home</router-link> |
-    <!-- <router-link to="/about">About</router-link> | -->
+     <router-link to="/about">About</router-link> | 
     <router-link :to="{name:'Login'}">Login</router-link> |
     <router-link to="/calificaciones">Calificaciones</router-link> |
   	<router-link to="/informacion">Informacion</router-link> |
     <router-link to="/contacto">Contacto</router-link>
-  </div>
+  </div> -->
   <router-view/>
 </template>
 
