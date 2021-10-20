@@ -224,26 +224,28 @@
 </template>
 
 <script>
+import LoginService from "@/services/login.js"
 export default {
 
 	mounted(){
-		
+		this.listaUsuarios = LoginService.obtenerTodos();
     },
     data(){
         return {
             cedula:'',
             password: '',
-			listaUsuarios: [
-				{'cc':'123456789', 'pass':'123'},
-			]			
+			listaUsuarios: [],		
         };			
     },
     
     methods:{
         procesarDatos(){
             let validar = false;
+
 			
             for(const i of this.listaUsuarios) {
+
+				console.log(i);
 					
                 if (i.cc === this.cedula && i.pass === this.password) {  
                     validar = true; 

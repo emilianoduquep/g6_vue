@@ -357,7 +357,7 @@
 
 <template>
 	<header>
-		<img src="images\Logo.png" alt="">
+		<img src="../images/Logo.png" alt="logo">
 		<div>
 			<!--<img src="images\Banner.png" alt="">-->
 			<h1>Universidad de las Tecnologias TIC</h1>
