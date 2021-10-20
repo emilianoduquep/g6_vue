@@ -44,7 +44,7 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 	display: grid;
-	grid-template-columns: 280px 860px;
+	grid-template-columns: 243px 897px;
 
 	
 }
@@ -52,7 +52,7 @@
 .contenedorHeader__imgLogo {
 	padding-bottom: 20px;
 	height: 220px;
-	width: 220px;
+	width: 243px;
 }
 
 .contenedorHeader__banner {
@@ -69,7 +69,7 @@
 
 .tituloU{
 	color: #F4FCFC;
-	width: 80%;
+	width: 100%;
 	text-align: center;
 }
 
@@ -113,9 +113,10 @@ body{
     float: left;
     color: #142727;
     width: 21.5%;
-    height: 1024px;
+    height: 1300px;
     background-color: #9c9f9d;
     padding-bottom: 40px;
+    border-radius: 5px; 
 }
 
 .menu__lateral h2{
@@ -123,6 +124,7 @@ body{
 	background-color: #e5e0dc;
 	padding-bottom: 10px;
 	padding-top: 10px;
+    border-radius: 5px; 
 }
 
 .menu__lateral a{
@@ -140,6 +142,7 @@ body{
 
 ul {
     list-style-type: none;
+    text-align: left;
     margin: 0;
     padding: 0;
 }
@@ -150,11 +153,13 @@ li{
 li:hover{
     background-color: #e5e0dc;
     cursor: pointer;
+    border-radius: 5px; 
 }
 
 li:active{
     background-color: #e5e0dc;
     cursor: pointer;
+    border-radius: 5px; 
 }
 li a {
     display: block;
@@ -171,27 +176,27 @@ p{
 }
 .cabecera{
     display: flex;
+    vertical-align: middle;
 }
 .contenedor__contenido{
 	margin-top: 20px;
 	margin-left: 50px;
     color: #142727;
     display: inline-block;
-    height: 1024px;
+    height: 1300px;
     width: 65%;
     background-color: #e5e0dc;
     text-align: center;
     font-size: 30px;
     font-weight: bold;
-
+    border-radius: 15px; 
 }
 
 .buscador{
-	float: right;
-	text-align: left;
+    float: right;
+	text-align: right;
     margin-right: 10px;
-	margin-bottom: 10px;
-    width: 20%;
+    width: 30%;
     
 }
 
@@ -201,16 +206,20 @@ p{
 
 .cursos_disp{
 	padding-top: 20px;
+    text-align: center;
 	margin-top: 30px;
 	margin-left: 30px;
     height: 85%;
     width: 90%;
     color: #e5e0dc;
     background-color: rgba(30, 33, 32, 0.68);
+    border-radius: 15px; 
 }
 
 .cursos_disp h3{
 	padding: 10px;
+    margin-left: 20%;
+    text-align: center;
 }
 
 .cursos_disp table{
@@ -328,13 +337,16 @@ p{
                 <div class="buscador">
                     <form action="">
                         <br>
-                        <label for="buscar"><p>Buscar curso</p></label>
-                        <p><input type="text" name="buscar" id="buscar" required></p> 
-        
+                        
+                        <label><p>Máx. Créditos: {{this.maxCreditos}}</p></label>
+                        <label><p>Créditos Disponibles: {{this.credDisp}}</p></label>
+                        <label><p>Créditos Inscritos: {{this.credIns}}</p></label>
+                        <!--<p><input type="text" name="buscar" id="buscar" required></p> 
+                            <label for="buscar"><p>Buscar curso</p></label>
                         <div>
-                            <p><input type="submit" value="Buscar" onclick="buscarCurso()"></p> 
-                            <p><input type="submit" value="Limpiar" onclick="limpiarBuscar()"></p> 
-                        </div>
+                            <p><input type="submit" value="Buscar" @click="actualizarBuscar()"></p> 
+                            <p><input type="submit" value="Limpiar" @click="actualizarLimpiar()"></p> 
+                        </div>-->
                     </form>
                 </div>
             </div>
@@ -342,21 +354,35 @@ p{
             <table>
                 <thead>
                     <tr>
-                        <h3>
                             <td><strong><p>CODIGO</p></strong></td>
                             <td><strong><p>ASIGNATURA</p></strong></td>
                             <td><strong><p>DOCENTE</p></strong></td>
                             <td><strong><p>CREDITOS</p></strong></td>
                             <td><strong><p>SELECCIONAR</p></strong></td>
                             
-                        </h3>
 
                     </tr>
                     
                 </thead>
 
-                <tbody id="tabla_cursos">
+                <tbody id="tabla_cursos" v-for="k in this.arregloCur[this.year]" :key="k">
                     
+                        <tr v-if="k.visto === false">
+                            <td><strong><p>{{k.codigo}}</p></strong></td>
+                            <td><strong><p>{{k.asignatura}}</p></strong></td>
+                            <td><strong><p>{{k.creditos}}</p></strong></td>
+                            <td><strong><p>{{k.docente}}</p></strong></td>
+                            
+                            <td v-if="k.che === true"><strong><p>
+                            <input type="checkbox" value="a" checked=true @click="cursosObj.cambiarEstado(k.codigo)">
+                            </p></strong></td> 
+
+                            <td v-if="k.che === false"><strong><p>
+                            <input type="checkbox" value="a" @click="cursosObj.cambiarEstado(k.codigo)">
+                            </p></strong></td>
+               
+                        </tr>
+
                 </tbody>
             </table>
 <!--
@@ -398,7 +424,7 @@ p{
 
             </table> -->
 
-            <input type="submit" value="Matricular" onclick="matricular()">
+            <input type="submit" value="Matricular" @click="actualizarMatricula()">
         </div>
 
         
@@ -420,3 +446,41 @@ p{
     </footer>
 </main>
 </template>
+
+<script> 
+import RegistroCursos from "@/services/registrarCursos.js"
+export default {
+
+	mounted(){
+		this.cursosObj = RegistroCursos;
+        this.arregloCur= this.cursosObj.cargarCursos(this.year, this.maxCreditos);
+        this.credDisp = this.cursosObj.getCredRes();
+        this.credIns = this.cursosObj.getCredTotales();
+    },
+    data(){
+        return {
+            cursosObj : null,
+            arregloCur: {},
+            year : '20212',
+            maxCreditos : 9,
+            credDisp: 0,
+            credIns:0,
+            msg:'',
+        };			
+    },
+    
+    methods:{
+		actualizarMatricula() {
+            this.cursosObj.matricular();
+            this.credDisp = this.cursosObj.getCredRes();
+            this.credIns = this.cursosObj.getCredTotales();
+            this.arregloCur= this.cursosObj.cargarCursos(this.year, this.maxCreditos);
+            this.msg = this.cursosObj.getMsg();
+            alert(this.msg);
+			
+		},	
+        
+    }
+}
+</script>
+
