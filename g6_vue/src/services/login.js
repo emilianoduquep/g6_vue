@@ -1,15 +1,28 @@
+import axios from "axios";
+
 class LoginService{
+    url = "http://localhost:8000/cliente";
 
-    totalUsuarios = [];
+    validar(miUsuario, miPassword){
 
-    constructor(){
+        let datos = {usuario:miUsuario, password: miPassword};
 
-        this.totalUsuarios = [{'cc':'123456789', 'pass':'123'}];
-        
-    };
-
-    obtenerTodos(){
-        
-        return this.totalUsuarios;
+        return axios.post(`${this.url}/validar`, datos);
     }
+
+    // ******** esto se hacia con los servicios ********
+    // totalUsuarios = [];
+    
+
+    // constructor(){
+
+    //     this.totalUsuarios = [{cc:'123456789', pass:'123'}];
+        
+    // };
+
+    // obtenerTodos(){
+        
+    //     return this.totalUsuarios;
+        
+    // }
 }export default new LoginService();

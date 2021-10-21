@@ -228,7 +228,9 @@ import LoginService from "@/services/login.js"
 export default {
 
 	mounted(){
-		this.listaUsuarios = LoginService.obtenerTodos();
+        // ******** esto se hacia con los servicios ********
+		//this.listaUsuarios = LoginService.obtenerTodos();
+		
     },
     data(){
         return {
@@ -240,23 +242,41 @@ export default {
     
     methods:{
         procesarDatos(){
-            let validar = false;
+
+			LoginService.validar(this.cedula, this.password).then(
+				(respuesta)=>{
+					
+					if (respuesta.data.id) {
+						
+						this.$router.push({name:"Informacion"});
+
+					}else{
+
+						alert("Verifique Usuario y Password otravez");
+
+					}
+				}
+			);
+
+			// ******** esto se hacia con los servicios ********
+
+            // let validar = false;
 
 			
-            for(const i of this.listaUsuarios) {
+            // for(const i of this.listaUsuarios) {
 
-				console.log(i);
+			// 	console.log(i);
 					
-                if (i.cc === this.cedula && i.pass === this.password) {  
-                    validar = true; 
-                }
-            };    
-            if (validar === true) {
-                alert('Cedula y password validos');
-				this.$router.push({name:"Informacion"});
-            }else{
-                alert('la cedula o el password no coinciden');
-            }
+            //     if (i.cc === this.cedula && i.pass === this.password) {  
+            //         validar = true; 
+            //     }
+            // };    
+            // if (validar === true) {
+            //     alert('Cedula y password validos');
+			// 	this.$router.push({name:"Informacion"});
+            // }else{
+            //     alert('la cedula o el password no coinciden');
+            // }
         }
     }
 }
