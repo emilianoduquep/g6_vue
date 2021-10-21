@@ -5,6 +5,8 @@ import Calificaciones from '../views/Calificaciones.vue'
 import Informacion from '../views/Informacion.vue'
 import Contacto from '../views/Contacto.vue'
 import Registrar from '../views/Registrar.vue'
+import isAuthenticated from './auth'
+
 
 const routes = [
   {
@@ -28,12 +30,14 @@ const routes = [
   {
     path: '/calificaciones',
     name: 'Calificaciones',
-    component: Calificaciones
+    component: Calificaciones,
+    beforeEnter:[isAuthenticated]
   },
   {
     path: '/informacion',
     name: 'Informacion',
-    component: Informacion
+    component: Informacion,
+    beforeEnter:[isAuthenticated]
   },
   {
     path: '/contacto',
@@ -43,7 +47,8 @@ const routes = [
   {
     path: '/registrar',
     name: 'Registrar',
-    component: Registrar
+    component: Registrar,
+    beforeEnter:[isAuthenticated]
   }
 ]
 

@@ -6,7 +6,7 @@
 			<div class="contenedorHeader__filtro">
 				
 				<nav class="contenedorHeader__navegacion">
-					<router-link to="/">Log Out</router-link>
+					<a href="#" @click.prevent="cerrarSesion">Log out</a>
 				</nav>
 	
 				<h1>Universidad de las Tecnologias TIC</h1>
@@ -27,7 +27,7 @@
                 <router-link to="/calificaciones">Ver Calificaciones</router-link>
             </div>
             <div class="menu_lateral__logout">
-                <router-link to="/">Log Out</router-link>
+                <a href="#" @click.prevent="cerrarSesion">Log out</a>
             </div>
             
         </aside>
@@ -375,6 +375,11 @@ export default {
     },
     
     methods:{
+        cerrarSesion(){
+			localStorage.clear();
+			this.$router.push({name: "Home"});
+		},
+
 		buscarCalificaciones() {
             
             if (this.sAnno === -1 || this.sSemester === -1) {

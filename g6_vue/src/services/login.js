@@ -10,6 +10,11 @@ class LoginService{
         return axios.post(`${this.url}/validar`, datos);
     }
 
+    obtenerUsuario(){
+        let id = localStorage.cedula;
+        return axios.get(`${this.url}/${id}`);
+    }
+
     // ******** esto se hacia con los servicios ********
     // totalUsuarios = [];
     

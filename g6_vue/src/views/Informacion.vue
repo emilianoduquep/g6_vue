@@ -363,7 +363,8 @@
 			<h1>Universidad de las Tecnologias TIC</h1>
 			<nav>				
 				<ul><!--Lista de vinculos de navegacion rapida a lo largo de la pagina-->
-					<li><router-link to="/">Log out</router-link></li>
+					<!-- <li><router-link to="/">Log out</router-link></li> -->
+					<li><a href="#" @click.prevent="cerrarSesion">Log out</a></li>
 				</ul>				
 			</nav>
 		</div>	
@@ -515,7 +516,10 @@ export default {
     },
 
     methods:{
-
+		cerrarSesion(){
+			localStorage.clear();
+			this.$router.push({name: "Home"});
+		}
     }
 }
 </script>

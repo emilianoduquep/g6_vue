@@ -304,7 +304,7 @@ p{
                 
                 <nav class="contenedorHeader__navegacion">
                     
-                    <router-link to="/">Log Out</router-link>
+                    <a href="#" @click.prevent="cerrarSesion">Log out</a>
                 </nav>
     
                 <h2 id="titulo" class="tituloU">Universidad de las Tecnologias TIC</h2>
@@ -479,6 +479,11 @@ export default {
             alert(this.msg);
 			
 		},	
+
+        cerrarSesion(){
+			localStorage.clear();
+			this.$router.push({name: "Home"});
+		}
         
     }
 }

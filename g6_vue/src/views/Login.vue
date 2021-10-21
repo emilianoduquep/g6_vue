@@ -193,13 +193,14 @@
 		<div class="contenedor__formulario">
 			<form class="formulario" @submit="procesarDatos" action="#">
 				<div class="formulario__datos">
-					<label class="formulario__label" for="cedulaUsuario">C.C. Usuario</label>
+					<label class="formulario__label" for="cedulaUsuario">Cédula</label>
 					<input class="formulario__input" type="text" placeholder="Entra tu cédula" name="cedulaUsuario" id="cedulaUsuario" v-model="cedula" required>
 					<label class="formulario__label" for="EntradaContraseña">Contraseña</label>
 					<input class="formulario__input" type="password" placeholder="Password" v-model="password" required>
 				</div>
 				<div class="ingresar">
-					<input type="submit" value="Ingresar" >	
+					<button @click.prevent="procesarDatos" >Ingresar</button>
+					<!-- <input type="submit" value="Ingresar" >	 -->
 				</div>
 			</form>
 		</div>
@@ -230,13 +231,21 @@ export default {
 	mounted(){
         // ******** esto se hacia con los servicios ********
 		//this.listaUsuarios = LoginService.obtenerTodos();
+
+		// LoginService.obtenerUsuario().then(
+		// 	(respuesta) => {
+		// 		this.usuario = respuesta.data
+		// 		console.log(this.usuario);
+		// 	}
+		// )
 		
     },
     data(){
         return {
             cedula:'',
             password: '',
-			listaUsuarios: [],		
+			listaUsuarios: [],	
+			usuario:''	
         };			
     },
     
@@ -247,12 +256,12 @@ export default {
 				(respuesta)=>{
 					
 					if (respuesta.data.id) {
-						
-						this.$router.push({name:"Informacion"});
+						localStorage.cedula = respuesta.data.id;
+						this.$router.push("/informacion");
 
 					}else{
 
-						alert("Verifique Usuario y Password otravez");
+						alert("Verifique Cédula y Contraseña");
 
 					}
 				}
