@@ -10,7 +10,7 @@ class CalificacionesService{
 
     };
 
-    arrCalificaciones = {};
+    arrCalificaciones = [];
     
     // constructor(){
     //     this.arrCalificaciones={

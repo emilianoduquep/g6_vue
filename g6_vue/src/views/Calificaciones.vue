@@ -82,7 +82,7 @@
                         </thead >
                         <tbody id="tabla">
                              
-							<tr v-for="k in this.arregloCalificaciones[this.yS]" :key="k">
+							<tr v-for="k of this.arregloCalificaciones" :key="k">
 								<td>{{k.codigo}}</td>
 								<td>{{k.asignatura}}</td>
 								<td>{{k.creditos}}</td>
@@ -372,7 +372,7 @@ export default {
     },
     data(){
         return {
-            arregloCalificaciones: {},
+            arregloCalificaciones: [],
             arregloGeneral:[],
             cedula:'1241654276',
 			anno: ['2016', '2017', '2018', '2019', '2020', '2021'],
@@ -393,9 +393,17 @@ export default {
             if (this.sAnno === -1 || this.sSemester === -1) {
 			 	alert("Debe seleccionar un año y un semestre");
 			}else{
+                this.arregloCalificaciones = [];
+                this.yS =(String(this.sAnno) + String(this.sSemester));
                 
-                this.yS=parseInt(String(this.sAnno) + String(this.sSemester));
-                
+                for (const key of this.arregloGeneral) {
+                    
+                     if (key.aSemestre === this.yS) {
+                         this.arregloCalificaciones.push(key)
+                     }
+                   
+                }
+
             }
 
             
