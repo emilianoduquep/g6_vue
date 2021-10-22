@@ -360,12 +360,20 @@ export default {
 
 	mounted(){
 		
-        this.arregloCalificaciones=CalificacionesService.obtenerTodos();
+        //this.arregloCalificaciones=CalificacionesService.obtenerTodos();
+        CalificacionesService.obtenerMaterias().then((respuesta)=>{
+            if (respuesta.data) {
+                //console.log(respuesta.data[0].asignatura);
+                this.arregloGeneral=respuesta.data;
+                
+            }
+        })
 		
     },
     data(){
         return {
             arregloCalificaciones: {},
+            arregloGeneral:[],
             cedula:'1241654276',
 			anno: ['2016', '2017', '2018', '2019', '2020', '2021'],
 			sAnno: -1,
@@ -385,6 +393,7 @@ export default {
             if (this.sAnno === -1 || this.sSemester === -1) {
 			 	alert("Debe seleccionar un año y un semestre");
 			}else{
+                
                 this.yS=parseInt(String(this.sAnno) + String(this.sSemester));
                 
             }
@@ -409,7 +418,8 @@ export default {
 			// 	}
 			// }
 			
-		},		
+		},
+	
     }
 }
 </script>
