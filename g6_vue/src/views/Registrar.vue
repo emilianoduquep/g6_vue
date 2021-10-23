@@ -3,7 +3,7 @@
 
 
 		main {
-            margin: 0;
+            margin: 0 auto;
 			padding: 0;
 			font-size: 62.5%;
 

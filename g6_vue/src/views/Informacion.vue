@@ -1,4 +1,9 @@
 <style scoped>
+
+.contenedorTotal {
+    width: 1140px;
+    margin:0 auto;
+}
 	html {
 	  font-family: 'Poppins', sans-serif;
 	  font-size: 16px;
@@ -356,6 +361,8 @@
 </style>
 
 <template>
+<div class="contenedorTotal">
+
 	<header>
 		<img src="../images/Logo.png" alt="logo">
 		<div>
@@ -498,6 +505,7 @@
 	
 	<footer>
 	</footer>
+</div>
 </template>
 
 <script>

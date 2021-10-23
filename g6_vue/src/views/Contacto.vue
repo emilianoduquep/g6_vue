@@ -20,19 +20,20 @@
         <form class="formulario__contenedor" action="#" target="" method="get" name="formDatosPersonales">
             <div class="formulario">       
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Escribe tu nombre" />
+                <input type="text" name="nombre" id="nombre" placeholder="Escribe tu nombre" v-model="nombre" />
 
                 <label for="apellidos">Apellidos</label>
-                <input type="text" name="apellidos" id="apellidos" placeholder="1r Apellido" />
+                <input type="text" name="apellidos" id="apellidos" placeholder="1r Apellido" v-model="apellidos" />
 
                 <label for="email" >Email</label>
-                <input type="email" name="email" id="email" placeholder="email" required />
+                <input type="email" name="email" id="email" placeholder="email" required v-model="email"/>
 
                 <label for="mensaje">Comentarios</label>
-                <textarea name="mensaje" for="mensaje" placeholder="describe brevemente en menos de 300 carácteres" maxlength="300"></textarea>
+                <textarea name="mensaje" for="mensaje" placeholder="describe brevemente en menos de 300 carácteres" maxlength="300" v-model="comentarios"></textarea>
             </div>
             <div>
-                    <input type="submit" name="enviar" value="enviar datos" />
+                    <!-- <input type="submit" name="enviar" value="enviar datos" /> -->
+                    <button @click.prevent="enviarDatos" >Enviar</button>
             </div>
         </form>
 
@@ -50,8 +51,37 @@
     </div>
 </template>
 
-<style scoped>
+<script>
 
+export default {
+    data() {
+        return {
+            nombre:'',
+            apellidos:'',
+            email:'',
+            comentarios:''
+        }
+    },
+    methods:{
+        enviarDatos(){
+            if (this.nombre === '""' || this.apellidos === '' || this.email === '') {
+                alert('Porfavor asegurese de entrar todos los datos')
+            } else {
+                alert('Sus datos han sido guardados en la base de datos');
+                this.nombre='';
+                this.apellidos='';
+                this.email=''
+                this.comentarios=''
+                
+            }
+            
+        }
+    }
+}
+</script>
+
+
+<style scoped>
 
 .contenedorTotal {
     width: 1140px;

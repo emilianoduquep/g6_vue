@@ -1,134 +1,132 @@
 <template>
-    <body>
-	<header class="contenedorHeader">
-		<img class="contenedorHeader__imgLogo" src="../images/Logo.png" alt="logo">
-		<div class="contenedorHeader__banner">
-			<div class="contenedorHeader__filtro">
-				
-				<nav class="contenedorHeader__navegacion">
-					<a href="#" @click.prevent="cerrarSesion">Log out</a>
-				</nav>
-	
-				<h1>Universidad de las Tecnologias TIC</h1>
-			</div>
-
-		</div>
-	</header>
-
-	<main class="contenedor">
-        <aside class="menu_lateral">
-            <div class="menu_lateral-menu">
-                <h2>Menú</h2>
-            </div>
-            
-            <div class="menu_lateral__opciones">
-                <router-link to="/informacion">Información Personal</router-link>
-                <router-link to="/registrar">Registrar Cursos</router-link>
-                <router-link to="/calificaciones">Ver Calificaciones</router-link>
-            </div>
-            <div class="menu_lateral__logout">
-                <a href="#" @click.prevent="cerrarSesion">Log out</a>
-            </div>
-            
-        </aside>
-        <section class="ventana_cursos">
-            <div class="ventana_cursos__cabecera">
-                <!-- <form class="ventana_cursos__cabecera-buscar" action="">
-                    <label for="buscar">Buscar</label>
-                    <input type="text" name="buscar" id="buscar" required> 
-                    <input type="submit" value="Buscar" onclick="return buscar()"> 
-                </form> -->
-            </div>
-
-
-            <div class="ventana_cursos__cuerpo">
-                <h3>Calificaciones de Cursos Inscritos</h3>
-                <div class="ventana_cursos__seleccionadores">
-                    <div>
-                        <label for="Año">Año</label>
-                        <select name="year" id="select_year" v-model="sAnno">
-                            <option value=-1>Seleccione el Año</option>
-							<option v-for="i in anno" :key="i" :value="i">{{i}}</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="semestre">Semestre</label>
-                        <select name="semester" id="select_semester" v-model="sSemester">
-							<option value=-1>Seleccione el Semestre</option>
-							<option v-for="i in 2" :key="i" v-bind:value="i">{{i}}</option>                
-                        </select>
-                    </div>
-
-                    <div>
-                        <a class="boton_buscar" @click="buscarCalificaciones()">Buscar</a>
-                    </div>
-            
-
+    <div class="contenedorTotal">
+        <header class="contenedorHeader">
+            <img class="contenedorHeader__imgLogo" src="../images/Logo.png" alt="logo">
+            <div class="contenedorHeader__banner">
+                <div class="contenedorHeader__filtro">
+                    
+                    <nav class="contenedorHeader__navegacion">
+                        <a href="#" @click.prevent="cerrarSesion">Log out</a>
+                    </nav>
+        
+                    <h1>Universidad de las Tecnologias TIC</h1>
                 </div>
 
-                <div class="ventana_cursos__cuerpo-fondo">
-                    <table border="1" class="ventana_cursos__cuerpo-tabla" >
-                        <thead >
-                            <tr>
-                                <th>Código</th>
-                                <th>Asignatura</th>
-                                <th>Crd</th>
-                                <th>1er</th>
-                                <th>2do</th>
-                                <th>3er</th>
+            </div>
+        </header>
+
+        <main class="contenedor">
+            <aside class="menu_lateral">
+                <div class="menu_lateral-menu">
+                    <h2>Menú</h2>
+                </div>
+                
+                <div class="menu_lateral__opciones">
+                    <router-link to="/informacion">Información Personal</router-link>
+                    <router-link to="/registrar">Registrar Cursos</router-link>
+                    <router-link to="/calificaciones">Ver Calificaciones</router-link>
+                </div>
+                <div class="menu_lateral__logout">
+                    <a href="#" @click.prevent="cerrarSesion">Log out</a>
+                </div>
+                
+            </aside>
+            <section class="ventana_cursos">
+                <div class="ventana_cursos__cabecera">
+                    <!-- <form class="ventana_cursos__cabecera-buscar" action="">
+                        <label for="buscar">Buscar</label>
+                        <input type="text" name="buscar" id="buscar" required> 
+                        <input type="submit" value="Buscar" onclick="return buscar()"> 
+                    </form> -->
+                </div>
+
+
+                <div class="ventana_cursos__cuerpo">
+                    <h3>Calificaciones de Cursos Inscritos</h3>
+                    <div class="ventana_cursos__seleccionadores">
+                        <div>
+                            <label for="Año">Año</label>
+                            <select name="year" id="select_year" v-model="sAnno">
+                                <option value=-1>Seleccione el Año</option>
+                                <option v-for="i in anno" :key="i" :value="i">{{i}}</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="semestre">Semestre</label>
+                            <select name="semester" id="select_semester" v-model="sSemester">
+                                <option value=-1>Seleccione el Semestre</option>
+                                <option v-for="i in 2" :key="i" v-bind:value="i">{{i}}</option>                
+                            </select>
+                        </div>
+
+                        <div>
+                            <a class="boton_buscar" @click="buscarCalificaciones()">Buscar</a>
+                        </div>
+                
+
+                    </div>
+
+                    <div class="ventana_cursos__cuerpo-fondo">
+                        <table border="1" class="ventana_cursos__cuerpo-tabla" >
+                            <thead >
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Asignatura</th>
+                                    <th>Crd</th>
+                                    <th>1er</th>
+                                    <th>2do</th>
+                                    <th>3er</th>
+                                    
+                                </tr>
+                            </thead >
+                            <tbody id="tabla">
                                 
-                            </tr>
-                        </thead >
-                        <tbody id="tabla">
-                             
-							<tr v-for="k of this.arregloCalificaciones" :key="k">
-								<td>{{k.codigo}}</td>
-								<td>{{k.asignatura}}</td>
-								<td>{{k.creditos}}</td>
-								<td>{{k.periodo1}}</td>
-								<td>{{k.periodo2}}</td>
-								<td>{{k.periodo3}}</td>
-								
-							</tr>
-                        </tbody>
+                                <tr v-for="k of this.arregloCalificaciones" :key="k">
+                                    <td>{{k.codigo}}</td>
+                                    <td>{{k.asignatura}}</td>
+                                    <td>{{k.creditos}}</td>
+                                    <td>{{k.periodo1}}</td>
+                                    <td>{{k.periodo2}}</td>
+                                    <td>{{k.periodo3}}</td>
+                                    
+                                </tr>
+                            </tbody>
 
-                    </table>
+                        </table>
+                    </div>
+
                 </div>
-
+                
+        
+            </section>
+        </main>
+    
+        
+        <footer>
+            <!-- <img src="images\Banner.png" alt="Pie de pagina"> -->
+            <div class="contenedorFooter">
+                <div class="contenedorFooter__banner">
+                    <nav class="navegacion-footer">
+                        <router-link to="/">Log Out</router-link>
+                    </nav>
+                </div>
             </div>
-            
+        </footer>
+    </div>        
     
-        </section>
-    </main>
-
-	
-	<footer>
-		<!-- <img src="images\Banner.png" alt="Pie de pagina"> -->
-		<div class="contenedorFooter">
-			<div class="contenedorFooter__banner">
-				<nav class="navegacion-footer">
-					<router-link to="/">Log Out</router-link>
-				</nav>
-			</div>
-		</div>
-	</footer>
-    
-</body>
 </template>
 
 <style scoped>
- html * {
-			margin: 0;
-			padding: 0;
-			font-size: 62.5%;
-			/* esto se hace para que 1rem = 10px*/
-		}
 
-		body {
-			max-width: 1140px;
-			font-size: 16px;
-		}
+        .contenedorTotal {
+            margin: 0 auto;
+            padding: 0;
+            font-size: 62.5%;
+            /* esto se hace para que 1rem = 10px*/
+            max-width: 1140px;
+            font-size: 16px;
+        }
 
 		h1 {
 			font-size: 3.0rem;
@@ -205,10 +203,11 @@
 
 		/** Main **/
         .contenedor {
+            
             display: grid;
             grid-template-columns: 1fr 3fr;
             font-size: 4rem;
-            height: 55rem;
+            
         }
         /** Aside **/
         .menu_lateral {
@@ -286,6 +285,13 @@
             display: flex;
             justify-content: space-evenly;
             height:min-content;
+        }
+
+        .ventana_cursos__seleccionadores label{
+            font-size: 1.8rem;
+        }
+        #select_year, #select_semester{
+            height: 2.5rem;
         }
         .boton_buscar {
             text-decoration: none;

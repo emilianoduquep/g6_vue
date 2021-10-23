@@ -1,7 +1,8 @@
 import axios from "axios";
 
 class LoginService{
-    url = "http://localhost:8000/cliente";
+    //url = "http://localhost:8080/cliente";
+    url = "http://132.145.73.75:8080/cliente";
 
     validar(miUsuario, miPassword){
 
