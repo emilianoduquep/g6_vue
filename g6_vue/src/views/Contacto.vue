@@ -52,14 +52,18 @@
 </template>
 
 <script>
-
+import ContactoService from "@/services/contacto.js";
 export default {
     data() {
         return {
             nombre:'',
             apellidos:'',
             email:'',
-            comentarios:''
+            comentarios:'',
+            infoContacto:{"nombre":'',
+                            "apellido":'',
+                            "email":'',
+                            "comentario":''}
         }
     },
     methods:{
@@ -67,11 +71,23 @@ export default {
             if (this.nombre === '""' || this.apellidos === '' || this.email === '') {
                 alert('Porfavor asegurese de entrar todos los datos')
             } else {
-                alert('Sus datos han sido guardados en la base de datos');
-                this.nombre='';
-                this.apellidos='';
-                this.email=''
-                this.comentarios=''
+                this.infoContacto.nombre=this.nombre;
+                this.infoContacto.apellido=this.apellidos;
+                this.infoContacto.email=this.email;
+                this.infoContacto.comentario=this.comentarios;
+
+                ContactoService.guardar(this.infoContacto).then((respuesta)=>{
+                    if(respuesta){
+                        alert('Sus datos han sido guardados en la base de datos');
+                        this.nombre='';
+                        this.apellidos='';
+                        this.email=''
+                        this.comentarios=''
+                    }
+                })
+                //console.log(this.infoContacto);
+
+
                 
             }
             
@@ -213,6 +229,9 @@ export default {
             font-size: x-large;
             margin-top: 30px;
             margin-bottom: 20px;
+        }
+        div button {
+            margin-top: 1rem;
         }
 
 
